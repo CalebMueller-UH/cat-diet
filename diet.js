@@ -16,11 +16,19 @@ const foods = [['flour', 'water'],
   ['fish', 'cornmeal', 'salt', 'black pepper', 'cayenne pepper', 'bacon'],
   ['flour', 'salt', 'pepper', 'fish', 'oil', 'parsley', 'onion']];
 
-const ingredients = ['fish', 'beef', 'pork', 'chicken'];
+// eslint-disable-next-line no-unused-vars
+const kittyLikes = ['fish', 'beef', 'pork', 'chicken'];
+// eslint-disable-next-line no-unused-vars
+const kittyDislikes = ['cayenne pepper', 'chicken'];
 
 // eslint-disable-next-line no-unused-vars,no-shadow
-const whatCatWillEat = (foodstuffs, ingredients) =>
+const whatCatWillEat = (foodstuffs, likes, dislikes) => {
   // eslint-disable-next-line no-undef,no-unused-vars,implicit-arrow-linebreak
-  _.filter(foodstuffs, food => _.intersection(food, ingredients).length > 0);
+  const foodsWithLikes = _.filter(foodstuffs, food => _.intersection(food, likes).length > 0);
+  // eslint-disable-next-line no-unused-vars,eqeqeq
+  const foodWithLikesAndNoDislikes = _.filter(foodsWithLikes, food => _.intersection(food, dislikes).length == 0);
+  return foodWithLikesAndNoDislikes;
+};
 
-console.log(whatCatWillEat(foods, ingredients));
+// eslint-disable-next-line no-undef
+console.log(whatCatWillEat(foods, kittyLikes, kittyDislikes));
